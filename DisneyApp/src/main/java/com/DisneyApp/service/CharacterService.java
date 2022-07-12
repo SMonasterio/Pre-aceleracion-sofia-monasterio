@@ -1,7 +1,7 @@
 /*package com.DisneyApp.service;
 
-import com.DisneyApp.model.Pelicula;
-import com.DisneyApp.model.Personaje;
+import com.DisneyApp.model.MovieEntity;
+import com.DisneyApp.model.Character;
 import com.DisneyApp.repository.PeliculaRepository;
 import com.DisneyApp.repository.PersonajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
