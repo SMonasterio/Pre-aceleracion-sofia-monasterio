@@ -13,4 +13,5 @@ public class GenreDTO {
     private Integer id;
     private String name;
     private String image;
+    //private List<MovieDTO> genreMovies;
 }

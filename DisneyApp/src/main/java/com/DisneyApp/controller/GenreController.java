@@ -1,10 +1,12 @@
 package com.DisneyApp.controller;
 
 import com.DisneyApp.dto.GenreDTO;
+import com.DisneyApp.entity.GenreEntity;
 import com.DisneyApp.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +24,9 @@ public class GenreController {
     }
 
 
-    public ResponseEntity<GenreDTO> save (@RequestBody GenreDTO genre){
-        GenreDTO savedGenre = genreService.save(genre);
+    @PostMapping()
+    public ResponseEntity<GenreEntity> save (@RequestBody GenreDTO genre){
+        GenreEntity savedGenre = genreService.save(genre);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedGenre);
     }
 
