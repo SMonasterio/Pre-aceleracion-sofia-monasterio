@@ -1,27 +1,53 @@
-/*package com.DisneyApp.service;
+package com.DisneyApp.service;
 
-import com.DisneyApp.model.MovieEntity;
-import com.DisneyApp.model.Character;
-import com.DisneyApp.repository.PeliculaRepository;
-import com.DisneyApp.repository.PersonajeRepository;
+import com.DisneyApp.dto.CharacterDTO;
+import com.DisneyApp.entity.CharacterEntity;
+import com.DisneyApp.repository.CharacterRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class PersonajeService {
+public class CharacterService {
     @Autowired
-    private final PersonajeRepository personajeRepository;
+    private final CharacterRepository characterRepository;
     @Autowired
-    private final PeliculaRepository peliculaRepository;
+    private ObjectMapper mapper;
 
 
-    public PersonajeService(PersonajeRepository personajeRepository, PeliculaRepository peliculaRepository) {
-        this.personajeRepository = personajeRepository;
-        this.peliculaRepository = peliculaRepository;
+    @Autowired
+    public CharacterService(CharacterRepository characterRepository, ObjectMapper mapper) {
+        this.characterRepository = characterRepository;
+        this.mapper = mapper;
+    }
+
+    public CharacterEntity save (CharacterEntity characterEntity){
+        return characterRepository.save(characterEntity);
+    }
+
+    public List<CharacterEntity> allCharacters(){
+        return characterRepository.findAll();
+    }
+
+    public CharacterEntity update(CharacterDTO characterDTO){
+        CharacterEntity character = mapper.convertValue(characterDTO, CharacterEntity.class);
+        return characterRepository.save(character);
+    }
+
+    public Optional<CharacterEntity> findCharcarterById(Integer id){
+        return characterRepository.findById(id);
+    }
+
+    public void delete(Integer id) throws Exception {
+        Optional<CharacterEntity> foundCharacter = findCharcarterById(id);
+        if (foundCharacter.isPresent())
+            characterRepository.deleteById(id);
+        else
+            throw new Exception("Character with id: "+id+" not found.");
     }
 
 
 }
-*/
