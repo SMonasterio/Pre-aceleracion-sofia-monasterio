@@ -21,7 +21,5 @@ public class GenreEntity {
     private String name;
     private String image;
 
-    @ManyToMany(mappedBy = "moviesGenres", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<MovieEntity> movies = new ArrayList<>();
 
 }

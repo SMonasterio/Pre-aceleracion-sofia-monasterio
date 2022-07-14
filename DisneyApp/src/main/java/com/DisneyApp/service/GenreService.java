@@ -1,6 +1,6 @@
 package com.DisneyApp.service;
 
-import com.DisneyApp.dto.GenreDTO;
+import com.DisneyApp.entity.dto.GenreDTO;
 import com.DisneyApp.entity.GenreEntity;
 import com.DisneyApp.repository.GenreRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;

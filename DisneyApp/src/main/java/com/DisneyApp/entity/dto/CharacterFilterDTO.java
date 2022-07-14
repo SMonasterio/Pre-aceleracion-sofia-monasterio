@@ -1,17 +1,19 @@
-package com.DisneyApp.dto;
+package com.DisneyApp.entity.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class GenreDTO {
-    private Integer id;
+public class CharacterFilterDTO {
     private String name;
-    private String image;
-    //private List<MovieDTO> genreMovies;
+    private Integer age;
+    private List<Integer> movies;
 }

@@ -1,6 +1,6 @@
 package com.DisneyApp.controller;
 
-import com.DisneyApp.dto.CharacterDTO;
+import com.DisneyApp.entity.dto.CharacterDTO;
 import com.DisneyApp.entity.CharacterEntity;
 import com.DisneyApp.handler.ResponseHandler;
 import com.DisneyApp.service.CharacterService;
@@ -29,7 +29,7 @@ public class CharacterController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCharacter);
     }
 
-    @GetMapping()
+    @GetMapping("/all")
     public ResponseEntity<Object> getAllCharacters(){
         return ResponseHandler.generateResponse("Character's list", HttpStatus.OK, characterService.allCharacters());
     }
@@ -67,4 +67,22 @@ public class CharacterController {
         }
         return response;
     }
+
+    @GetMapping()
+    public ResponseEntity<Object> findCharacter (
+            @RequestParam (required = false) String name,
+            @RequestParam (required = false) Integer age,
+            @RequestParam (required = false) Integer idMovie){
+        CharacterEntity foundCharacterByName = characterService.findCharacterByName(name);
+        String [] dataName = new String[2];
+        dataName[0]=foundCharacterByName.getName();
+        dataName[1]=foundCharacterByName.getImage();
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(dataName);
+    }
+
+
+
 }
+
+

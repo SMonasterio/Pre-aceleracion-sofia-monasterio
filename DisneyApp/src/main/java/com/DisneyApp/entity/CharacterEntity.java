@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@ToString
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,7 +23,10 @@ public class CharacterEntity {
     private Double weight;
     private String history;
 
-    @ManyToMany(mappedBy = "moviesCharacters", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<MovieEntity> movies = new ArrayList<>();
+    @OneToMany(mappedBy = "character", fetch = FetchType.LAZY)
+    private List<MovieCharacters> movies = new ArrayList<>();
 
+    public String toString(){
+        return "Name: "+getName()+". " + "\n" +"Image: "+getImage();
+    }
 }

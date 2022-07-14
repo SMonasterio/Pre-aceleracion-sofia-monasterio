@@ -1,6 +1,6 @@
 package com.DisneyApp.controller;
 
-import com.DisneyApp.dto.GenreDTO;
+import com.DisneyApp.entity.dto.GenreDTO;
 import com.DisneyApp.entity.GenreEntity;
 import com.DisneyApp.handler.ResponseHandler;
 import com.DisneyApp.service.GenreService;

@@ -1,6 +1,6 @@
 package com.DisneyApp.service;
 
-import com.DisneyApp.dto.CharacterDTO;
+import com.DisneyApp.entity.dto.CharacterDTO;
 import com.DisneyApp.entity.CharacterEntity;
 import com.DisneyApp.repository.CharacterRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -49,5 +49,17 @@ public class CharacterService {
             throw new Exception("Character with id: "+id+" not found.");
     }
 
+
+
+
+    public CharacterEntity findCharacterByName(String name){
+        CharacterEntity foundCharacter = characterRepository.findCharacterByName(name);
+        return foundCharacter ;
+    }
+
+    public CharacterEntity findCharacterByAge(Integer age){
+        CharacterEntity foundCharacter = characterRepository.findCharacterByAge(age);
+        return foundCharacter ;
+    }
 
 }
