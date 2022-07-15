@@ -1,9 +1,8 @@
 package com.DisneyApp.controller;
 
 import com.DisneyApp.entity.dto.MovieDTO;
-import com.DisneyApp.entity.MovieEntity;
 import com.DisneyApp.handler.ResponseHandler;
-import com.DisneyApp.service.MovieService;
+import com.DisneyApp.service.impl.MovieService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/movies")
 public class MovieController {
-
+/*
     @Autowired
     private final MovieService movieService;
     private ObjectMapper mapper;
@@ -24,13 +23,13 @@ public class MovieController {
         this.mapper = mapper;
     }
 
-    @PostMapping()
+    /*@PostMapping()
     public ResponseEntity<MovieEntity> save (@RequestBody MovieEntity movieEntity){
         MovieEntity savedMovie = movieService.save(movieEntity);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMovie);
-    }
+    }*/
 
-    @GetMapping("/all")
+    /*@GetMapping("/all")
     public ResponseEntity<Object> getAllMovies(){
         return ResponseHandler.generateResponse("Movie's list", HttpStatus.OK, movieService.allMovies());
     }
@@ -66,5 +65,5 @@ public class MovieController {
             response = ResponseHandler.generateResponse("Movie not found", HttpStatus.NOT_FOUND, "id: "+id);
         }
         return response;
-    }
+    }*/
 }

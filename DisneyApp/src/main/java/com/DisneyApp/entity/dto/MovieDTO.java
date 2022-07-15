@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -12,12 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MovieDTO {
-    private Long id;
     private String image;
     private String title;
-    private String creationDate;
-    private double rating;
-    //private boolean deleted;
-    private List<CharacterDTO> movieCharacter;
-    private List<GenreDTO> movieGenres;
+    private LocalDate relaseDate;
+    private Integer rating;
+    private List<CharacterDTO> characters;
+    private List<GenreDTO> genres;
 }

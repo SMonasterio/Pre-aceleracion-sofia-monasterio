@@ -5,17 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CharacterDTO {
-    private String image;
+public class GenreBasicDTO {
     private String name;
-    private Integer age;
-    private Double weight;
-    private String history;
-    private List<MovieDTO> movies;
+    private String image;
 }

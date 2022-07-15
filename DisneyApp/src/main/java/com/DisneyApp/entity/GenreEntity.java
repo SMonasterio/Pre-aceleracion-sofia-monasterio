@@ -21,5 +21,12 @@ public class GenreEntity {
     private String name;
     private String image;
 
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST, CascadeType.MERGE
+    }, fetch = FetchType.LAZY)
+    @JoinTable(name = "movies_genres",
+            joinColumns = @JoinColumn(name = "genre_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    private List<MovieEntity> genresMovies = new ArrayList<>();
 
 }

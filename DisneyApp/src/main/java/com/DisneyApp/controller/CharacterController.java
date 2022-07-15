@@ -1,18 +1,12 @@
 package com.DisneyApp.controller;
 
-import com.DisneyApp.entity.dto.CharacterDTO;
-import com.DisneyApp.entity.CharacterEntity;
-import com.DisneyApp.handler.ResponseHandler;
-import com.DisneyApp.service.CharacterService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/characters")
 public class CharacterController {
+
+    /*
 
     @Autowired
     private final CharacterService characterService;
@@ -81,7 +75,7 @@ public class CharacterController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(dataName);
     }
 
-
+*/
 
 }
 

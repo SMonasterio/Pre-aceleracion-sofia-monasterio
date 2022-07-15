@@ -23,8 +23,13 @@ public class CharacterEntity {
     private Double weight;
     private String history;
 
-    @OneToMany(mappedBy = "character", fetch = FetchType.LAZY)
-    private List<MovieCharacters> movies = new ArrayList<>();
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST, CascadeType.MERGE
+    }, fetch = FetchType.LAZY)
+    @JoinTable(name = "movies_characters",
+            joinColumns = @JoinColumn(name = "character_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    private List<MovieEntity> charactersMovies = new ArrayList<>();
 
     public String toString(){
         return "Name: "+getName()+". " + "\n" +"Image: "+getImage();

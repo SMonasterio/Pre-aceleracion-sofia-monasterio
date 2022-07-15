@@ -26,34 +26,22 @@ public class MovieEntity {
     private LocalDate releaseDate;
     private Integer rating;
 
-    @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
-    private List<MovieCharacters> characters = new ArrayList<>();
-
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "genres_id")
-    private List<GenreEntity> genres = new ArrayList<>();
-
-    /*@ManyToMany(cascade = {
+    @ManyToMany(cascade = {
             CascadeType.PERSIST, CascadeType.MERGE
     }, fetch = FetchType.LAZY)
     @JoinTable(name = "movies_characters",
-                joinColumns = @JoinColumn(name = "movie_id"),
-                inverseJoinColumns = @JoinColumn(name = "character_id"))
-    private List<CharacterEntity> moviesCharacters = new ArrayList<>();*/
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "character_id"))
+    private List<CharacterEntity> moviesCharacters = new ArrayList<>();
 
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST, CascadeType.MERGE
+    }, fetch = FetchType.LAZY)
+    @JoinTable(name = "movies_genres",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private List<GenreEntity> moviesGenres = new ArrayList<>();
 
-
-
-    /*@ManyToMany(
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE,
-            }, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "movies_genres",
-            joinColumns= @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "genre_id"))*/
 
 
 
