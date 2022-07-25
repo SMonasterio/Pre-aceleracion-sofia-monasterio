@@ -16,7 +16,7 @@ public class MovieMapper {
     @Autowired
     GenreMapper genreMapper;
 
-    //Method to make movieDTO into movieEntity
+
     public MovieEntity MovieDTO2Entity(MovieDTO movieDTO){
         MovieEntity entity = new MovieEntity();
         entity.setImage(movieDTO.getImage());
@@ -26,7 +26,7 @@ public class MovieMapper {
         return entity;
     }
 
-    //Method to make movieEntity into movieDTO
+
     public MovieDTO  MovieEntity2DTO(MovieEntity entity, boolean b){
         MovieDTO movieDTO = new MovieDTO();
         movieDTO.setImage(entity.getImage());
@@ -40,7 +40,7 @@ public class MovieMapper {
         return movieDTO;
     }
 
-    //Method to make movieEntityLIST into movieDTOList
+
     public List<MovieDTO> EntityList2DTOList(List<MovieEntity> movieList, boolean b){
         List<MovieDTO> movieDTOList = new ArrayList<>();
         for (MovieEntity entity: movieList){
@@ -50,7 +50,7 @@ public class MovieMapper {
     }
 
 
-    //Method to make movieEntity into movieBasicDTO
+
     public MovieBasicDTO MovieEntity2BasicDTO(MovieEntity entity){
         MovieBasicDTO movieBasicDTO = new MovieBasicDTO();
         movieBasicDTO.setImage(entity.getImage());
@@ -59,7 +59,7 @@ public class MovieMapper {
         return movieBasicDTO;
     }
 
-    //Method to make MovieEntityList into MovieBasicDTOList
+
     public List<MovieBasicDTO> MovieEntityList2BasicDTOList(List<MovieEntity> entities){
         List<MovieBasicDTO> movieBasicDTOSList = new ArrayList<>();
         for (MovieEntity ent: entities){
@@ -68,17 +68,7 @@ public class MovieMapper {
         return movieBasicDTOSList;
     }
 
-    //Utils
-    /*public LocalDate String2LocalDate(String enteredDate) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("DD/MM/yyyy");
-        LocalDate transformedDate = LocalDate.parse(enteredDate, formatter);
-        return transformedDate;
-    }*/
 
-    /*public String LocalDateToString(LocalDate creationDate) {
-        String formattedDate = creationDate.format(DateTimeFormatter.ofPattern("DD/MM/yyyy"));
-        return formattedDate;
-    }*/
 
 
 }

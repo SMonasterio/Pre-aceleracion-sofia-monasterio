@@ -15,7 +15,7 @@ public class CharacterMapper {
     @Autowired
     MovieMapper movieMapper;
 
-    //Method to make CharacterDTO into CharaterEntity
+
     public CharacterEntity characterDTO2Entity(CharacterDTO characterDTO){
         CharacterEntity entity = new CharacterEntity();
         entity.setImage(characterDTO.getImage());
@@ -26,7 +26,7 @@ public class CharacterMapper {
         return entity;
     }
 
-    //Method to make CharaterEntity into CharacterDTO
+
     public CharacterDTO characterEntity2DTO(CharacterEntity entity, boolean b){
         CharacterDTO characterDTO = new CharacterDTO();
         characterDTO.setImage(entity.getImage());
@@ -40,7 +40,7 @@ public class CharacterMapper {
         return characterDTO;
     }
 
-    //Method to make CharaterEntityList into CharacterDTOList
+
     public List<CharacterDTO> characterEntityList2DTOList(List<CharacterEntity> CharacterEntitiesList, boolean b){
         List<CharacterDTO> CharactersDTOList = new ArrayList<>();
         for (CharacterEntity entity: CharacterEntitiesList){
@@ -49,7 +49,6 @@ public class CharacterMapper {
         return CharactersDTOList;
     }
 
-    //Method to make CharacterEntity into CharacterBasicDTO
     public CharacterBasicDTO characterEntity2BasicDTO(CharacterEntity entity){
         CharacterBasicDTO characterBasicDTO = new CharacterBasicDTO();
         characterBasicDTO.setImage(entity.getImage());
@@ -57,7 +56,7 @@ public class CharacterMapper {
         return characterBasicDTO;
     }
 
-    //Method to make CharacterEntityList into CharacterBasicDTOList
+
     public List<CharacterBasicDTO> characterEntityList2BasicDTOList(List<CharacterEntity> entities){
         List<CharacterBasicDTO> charactersBasicDTOList = new ArrayList<>();
         for (CharacterEntity entity: entities){
@@ -65,5 +64,6 @@ public class CharacterMapper {
         }
         return charactersBasicDTOList;
     }
+
 
 }
