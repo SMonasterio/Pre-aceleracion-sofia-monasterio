@@ -21,28 +21,24 @@ public class GenreController {
         this.genreService = genreService;
     }
 
-    //FUNCIONA
     @PostMapping()
     public ResponseEntity<GenreDTO> saveGenre (@RequestBody GenreDTO genreDTO){
         GenreDTO savedGenre = genreService.save(genreDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedGenre);
     }
 
-    //FUNCIONA
    @GetMapping()
    public ResponseEntity<Object> getAllGenres(){
        return ResponseHandler.generateResponse(
                "Genre's list", HttpStatus.OK, genreService.getAll());
    }
 
-   //FUNCIONA
    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteGenreById(@PathVariable Integer id){
         genreService.deleteByid(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("Genre deleted sucsessfully");
    }
 
-   //FUNCIONA
    @PutMapping("/{id}")
     public ResponseEntity<GenreDTO> updateGenre(@PathVariable Integer id, @RequestBody GenreDTO genreDTO){
         GenreDTO genre = genreService.updateById(id, genreDTO);

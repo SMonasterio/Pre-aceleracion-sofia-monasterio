@@ -26,25 +26,28 @@ public class MovieEntity {
     private LocalDate releaseDate;
     private Integer rating;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST, CascadeType.MERGE
-    }, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "movies_characters",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "character_id"))
     private List<CharacterEntity> moviesCharacters = new ArrayList<>();
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST, CascadeType.MERGE
-    }, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "movies_genres",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<GenreEntity> moviesGenres = new ArrayList<>();
 
 
+    public void addCharacterToMovie(CharacterEntity charToBeAdded) {
+        this.moviesCharacters.add(charToBeAdded);
+    }
+    public void removeCharacterToMovie(CharacterEntity charToRemove) {
+        this.moviesCharacters.remove(charToRemove);
+    }
 
 
-
-
+    public void addGenreToMovie(GenreEntity genreToBeAdded) {
+        this.moviesGenres.add(genreToBeAdded);
+    }
 }

@@ -1,5 +1,6 @@
 package com.DisneyApp.entity.dto;
 
+import com.DisneyApp.entity.CharacterEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,4 +20,8 @@ public class MovieDTO {
     private Integer rating;
     private List<CharacterDTO> characters;
     private List<GenreDTO> genres;
+
+    public void addCharacterToMovie(CharacterDTO charToBeAdded) {
+        this.characters.add(charToBeAdded);
+    }
 }

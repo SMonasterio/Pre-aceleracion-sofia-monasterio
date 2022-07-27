@@ -1,6 +1,7 @@
 package com.DisneyApp.service.impl;
 
 import com.DisneyApp.entity.CharacterEntity;
+import com.DisneyApp.entity.dto.CharacterBasicDTO;
 import com.DisneyApp.entity.dto.CharacterDTO;
 
 import com.DisneyApp.entity.dto.CharacterFiltersDTO;
@@ -36,6 +37,10 @@ public class CharacterService implements ICharacterService {
     }
 
 
+
+
+    //when save/update return w/movies asoc.
+    //Creation
     @Override
     public CharacterDTO save(CharacterDTO characterDTO) {
         CharacterEntity characterEntity = characterMapper.characterDTO2Entity(characterDTO);
@@ -44,14 +49,7 @@ public class CharacterService implements ICharacterService {
         return characterResult;
     }
 
-    @Override
-    public CharacterDTO findById(Integer id) {
-        Optional<CharacterEntity> characterFound = characterRepository.findById(id);
-        CharacterEntity charFound = characterFound.get();
-        CharacterDTO charFoundDto = characterMapper.characterEntity2DTO(charFound, true);
-        return charFoundDto;
-    }
-
+    //detail list w/movies asoc
     @Override
     public List<CharacterDTO> getAll() {
         List<CharacterEntity> characterEntityList = characterRepository.findAll();
@@ -59,16 +57,11 @@ public class CharacterService implements ICharacterService {
         return characterDTOList;
     }
 
-    @Override
-    public void deleteById(Integer id) {
-        characterRepository.deleteById(id);
-    }
-
+    //Edit (no update movies)
     @Override
     public CharacterDTO updateById(Integer id, CharacterDTO characterDTO) {
         Optional<CharacterEntity> charFound = characterRepository.findById(id);
         CharacterEntity charToUpdate = charFound.get();
-        //CharacterDTO charToUpdate = characterMapper.characterEntity2DTO(characterEntityFound, true);
 
         charToUpdate.setName(characterDTO.getName());
         charToUpdate.setAge(characterDTO.getAge());
@@ -79,22 +72,34 @@ public class CharacterService implements ICharacterService {
         CharacterEntity charUpdated = characterRepository.save(charToUpdate);
         CharacterDTO result = characterMapper.characterEntity2DTO(charUpdated, false);
 
-        //CharacterDTO charUpdated = characterMapper.characterEntity2DTO(charToUpdate, false);
-
         return result;
     }
 
+    //Delete
     @Override
-    public void addMovie(Integer id, Integer movieId) {
-
+    public void deleteById(Integer id) {
+        characterRepository.deleteById(id);
     }
 
     @Override
-    public List<CharacterDTO> getDetailsByFilter(String name, Integer age, Double weight, List<Integer> movies, String order) {
+    public CharacterDTO findCharacterById(Integer id) {
+        Optional<CharacterEntity> characterFound = characterRepository.findById(id);
+        boolean present = characterFound.isPresent();
+        CharacterDTO charFoundDto=null;
+        if (present){
+            CharacterEntity charFound = characterFound.get();
+            charFoundDto = characterMapper.characterEntity2DTO(charFound, true);
+        }
+        return charFoundDto;
+    }
+
+    //filter by age, weight, name, movies asoc.
+    @Override
+    public List<CharacterBasicDTO> getDetailsByFilter(String name, Integer age, Double weight, List<Integer> movies, String order) {
         CharacterFiltersDTO characterFiltersDTO = new CharacterFiltersDTO(name, age, weight, movies, order);
         List<CharacterEntity> characters = characterRepository.findAll(this.characterSpecification.getByFilters(characterFiltersDTO));
-        List<CharacterDTO> characterDTOList = characterMapper.characterEntityList2DTOList(characters, true);
+        List<CharacterBasicDTO> characterBasicDTOList = characterMapper.characterEntityList2BasicDTOList(characters);
 
-        return characterDTOList;
+        return characterBasicDTOList;
     }
 }

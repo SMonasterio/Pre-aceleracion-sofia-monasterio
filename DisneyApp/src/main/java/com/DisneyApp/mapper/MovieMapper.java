@@ -1,5 +1,6 @@
 package com.DisneyApp.mapper;
 
+import com.DisneyApp.entity.CharacterEntity;
 import com.DisneyApp.entity.MovieEntity;
 import com.DisneyApp.entity.dto.MovieBasicDTO;
 import com.DisneyApp.entity.dto.MovieDTO;
@@ -16,17 +17,22 @@ public class MovieMapper {
     @Autowired
     GenreMapper genreMapper;
 
+//TODO REVISAR PORQUE RELEASEDATE POSTEA NULL
 
+    //--------------------SINGLE ENTITIES MAPPERS-----------------------//
+
+    //---------MovieDTO to MovieEntity----------------//
     public MovieEntity MovieDTO2Entity(MovieDTO movieDTO){
         MovieEntity entity = new MovieEntity();
         entity.setImage(movieDTO.getImage());
         entity.setTitle(movieDTO.getTitle());
         entity.setRating(movieDTO.getRating());
         entity.setReleaseDate(movieDTO.getRelaseDate());
+
         return entity;
     }
 
-
+    //--------------------MovieEntity to MovieDTO-----------------//
     public MovieDTO  MovieEntity2DTO(MovieEntity entity, boolean b){
         MovieDTO movieDTO = new MovieDTO();
         movieDTO.setImage(entity.getImage());
@@ -40,26 +46,37 @@ public class MovieMapper {
         return movieDTO;
     }
 
-
-    public List<MovieDTO> EntityList2DTOList(List<MovieEntity> movieList, boolean b){
-        List<MovieDTO> movieDTOList = new ArrayList<>();
-        for (MovieEntity entity: movieList){
-            movieDTOList.add(this.MovieEntity2DTO(entity,b));
-        }
-        return movieDTOList;
-    }
-
-
-
+    //MovieEntity to MovieBasicDTO
     public MovieBasicDTO MovieEntity2BasicDTO(MovieEntity entity){
         MovieBasicDTO movieBasicDTO = new MovieBasicDTO();
         movieBasicDTO.setImage(entity.getImage());
         movieBasicDTO.setTitle(entity.getTitle());
-        movieBasicDTO.setRelaseDate(entity.getReleaseDate());
+         movieBasicDTO.setRelaseDate(entity.getReleaseDate());
+
         return movieBasicDTO;
     }
 
+    //-------------------------------------ENTITIES LIST'S MAPPERS----------------------------//
 
+    //MovieEntity LIST to MovieDTO LIST
+    public List<MovieDTO> EntityList2DTOList(List<MovieEntity> moviesList, boolean b){
+        List<MovieDTO> moviesDTOList = new ArrayList<>();
+        for (MovieEntity entity: moviesList){
+            moviesDTOList.add(this.MovieEntity2DTO(entity,b));
+        }
+        return moviesDTOList;
+    }
+
+    //MovieDTO LIST to MovieEntity LIST
+    public List<MovieEntity> DTOList2EntityList(List<MovieDTO> movieList, boolean b){
+        List<MovieEntity> movieEntityList = new ArrayList<>();
+        for (MovieDTO dto: movieList){
+            movieEntityList.add(this.MovieDTO2Entity(dto));
+        }
+        return movieEntityList;
+    }
+
+    //MovieEntity LIST to MovieBasicDTO LIST
     public List<MovieBasicDTO> MovieEntityList2BasicDTOList(List<MovieEntity> entities){
         List<MovieBasicDTO> movieBasicDTOSList = new ArrayList<>();
         for (MovieEntity ent: entities){
@@ -67,8 +84,4 @@ public class MovieMapper {
         }
         return movieBasicDTOSList;
     }
-
-
-
-
 }
