@@ -13,6 +13,8 @@ import com.DisneyApp.repository.GenreRepository;
 import com.DisneyApp.repository.MovieRepository;
 import com.DisneyApp.service.impl.CharacterService;
 import com.DisneyApp.service.impl.MovieService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Api(tags = "Movies")
 @RequestMapping("/movies")
 public class MovieController {
     @Autowired
@@ -37,12 +40,14 @@ public class MovieController {
     @Autowired
     GenreRepository genreRepository;
 
+    @ApiOperation(value="saveMovie", notes="Method to create a new movie")
     @PostMapping()
     public ResponseEntity<MovieDTO> save (@RequestBody MovieDTO movieDTO){
         MovieDTO savedMovie = movieService.save(movieDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMovie);
     }
 
+    @ApiOperation(value="updateMovieById", notes="Method to update a movie selected by ID")
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateById(@PathVariable Integer id , @RequestBody MovieDTO movieDTO){
         ResponseEntity<Object> response = null;
@@ -57,7 +62,7 @@ public class MovieController {
         }
         return response;
     }
-
+    @ApiOperation(value="searchMovieById", notes="Method to search a movie by it´s ID")
     @GetMapping("/searchById/{id}")
     public ResponseEntity<Object> searchMovie (@PathVariable Integer id){
         ResponseEntity<Object> response = null;
@@ -75,6 +80,7 @@ public class MovieController {
         return response;
     }
 
+    @ApiOperation(value="deleteMovieById", notes="Method to delete a movie with it's ID")
     @DeleteMapping("{id}")
     public ResponseEntity<Object> delete(@PathVariable Integer id) throws Exception {
         ResponseEntity<Object> response = null;
@@ -89,6 +95,7 @@ public class MovieController {
         return response;
     }
 
+    @ApiOperation(value="getMovieByFilters", notes="Method to filter a movie by title or genre id")
     @GetMapping()
     public ResponseEntity<Object> getDetailsByFilters (
             @RequestParam (required = false) String title,
@@ -111,6 +118,7 @@ public class MovieController {
 
 
     //ADD CHARACTER TO A MOVIE ENDPOINT
+    @ApiOperation(value="addCharacterToMovie", notes="Method to add a character to a movie using theirs ids")
     @PostMapping("/{movieId}/character/{characterId}")
     public ResponseEntity<Object> addCharacterToMovie(@PathVariable Integer movieId, @PathVariable Integer characterId){
         Optional<MovieEntity> movie = movieRepository.findById(movieId);
@@ -131,6 +139,7 @@ public class MovieController {
     }
 
     //REMOVE CHARACTER FROM A MOVIE ENDPOINT
+    @ApiOperation(value="removeCharacterToMovie", notes="Method to remove a character to a movie using theirs ids")
     @DeleteMapping("/{movieId}/character/{characterId}")
     public ResponseEntity<Object> removeCharacterToMovie(@PathVariable Integer movieId, @PathVariable Integer characterId){
         Optional<MovieEntity> movie = movieRepository.findById(movieId);
@@ -150,6 +159,7 @@ public class MovieController {
     }
 
     //ADD GENRE TO A MOVIE ENDPOINT
+    @ApiOperation(value="addGenreToMovie", notes="Method to add a genre to a movie using theirs ids")
     @PostMapping("/{movieId}/genre/{genreId}")
     public ResponseEntity<Object> addGenreToMovie(@PathVariable Integer movieId, @PathVariable Integer genreId){
         Optional<MovieEntity> movie = movieRepository.findById(movieId);
