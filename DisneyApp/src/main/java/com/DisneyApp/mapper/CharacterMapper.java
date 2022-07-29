@@ -50,6 +50,26 @@ public class CharacterMapper {
         return characterBasicDTO;
     }
 
+    //CharacterDTO TO CharacterBasicDTO
+    public CharacterBasicDTO characterDTO2BasicDTO(CharacterDTO entity){
+        CharacterBasicDTO characterBasicDTO = new CharacterBasicDTO();
+        characterBasicDTO.setImage(entity.getImage());
+        characterBasicDTO.setName(entity.getName());
+        return characterBasicDTO;
+    }
+
+    //CharacterBasicDTO to CharacterEntity
+    public CharacterEntity characterBasicDTO2Entity(CharacterBasicDTO characterBasicDTO){
+        CharacterEntity entity = new CharacterEntity();
+        entity.setImage(characterBasicDTO.getImage());
+        entity.setName(characterBasicDTO.getName());
+        //entity.setAge(characterDTO.getAge());
+       // entity.setWeight(characterDTO.getWeight());
+        //entity.setHistory(characterDTO.getHistory());
+        return entity;
+    }
+
+
     //----------------LIST'S MAPPERS-------------------//
     //CharacterDTO LIST to CharacterEntity LIST
     public List<CharacterDTO> characterEntityList2DTOList(List<CharacterEntity> CharacterEntitiesList, boolean b){
@@ -76,6 +96,15 @@ public class CharacterMapper {
             CharactersEntityList.add(this.characterDTO2Entity(dto));
         }
         return CharactersEntityList;
+    }
+
+    //CharacterDTO LIST to CharacterBasicDTO LIST
+    public List<CharacterBasicDTO> characterDTOList2BasicDTOList(List<CharacterDTO> dtos){
+        List<CharacterBasicDTO> charactersBasicDTOList = new ArrayList<>();
+        for (CharacterDTO dto: dtos){
+            charactersBasicDTOList.add(this.characterDTO2BasicDTO(dto));
+        }
+        return charactersBasicDTOList;
     }
 
 }

@@ -1,6 +1,5 @@
 package com.DisneyApp.entity.dto;
 
-import com.DisneyApp.entity.CharacterEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,10 +15,10 @@ import java.util.List;
 public class MovieDTO {
     private String image;
     private String title;
-    private LocalDate relaseDate;
+    private LocalDate releaseDate;
     private Integer rating;
     private List<CharacterDTO> characters;
-    private List<GenreDTO> genres;
+    //private List<GenreDTO> genres;
 
     public void addCharacterToMovie(CharacterDTO charToBeAdded) {
         this.characters.add(charToBeAdded);

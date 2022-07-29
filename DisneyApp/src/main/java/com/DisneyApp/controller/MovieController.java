@@ -45,8 +45,17 @@ public class MovieController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateById(@PathVariable Integer id , @RequestBody MovieDTO movieDTO){
-        MovieDTO movieUpdated = movieService.updateById(id, movieDTO);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(movieUpdated);
+        ResponseEntity<Object> response = null;
+        MovieDTO found = movieService.findMovieDTOById(id);
+
+        if (found!=null){
+            MovieDTO movieUpdated = movieService.updateById(id, movieDTO);
+            response=ResponseEntity.status(HttpStatus.ACCEPTED).body(movieUpdated);
+        }else{
+            response = ResponseHandler.generateResponse("Movie not found",
+                    HttpStatus.NOT_FOUND, null);
+        }
+        return response;
     }
 
     @GetMapping("/searchById/{id}")
@@ -54,9 +63,11 @@ public class MovieController {
         ResponseEntity<Object> response = null;
         MovieDTO movieFound = movieService.findMovieDTOById(id);
         List<MovieDTO> list = movieService.getAll();
+        List<MovieBasicDTO> basicList = movieMapper.DTOList2BasicDTOList(list,true);
+
         if (movieFound == null) {
             response = ResponseHandler.generateResponse("Movie not found",
-                    HttpStatus.NOT_FOUND, list);
+                    HttpStatus.NOT_FOUND, basicList);
         }else {
             response = ResponseHandler.generateResponse("Movie found",
                     HttpStatus.OK, movieFound);
@@ -66,27 +77,34 @@ public class MovieController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<Object> delete(@PathVariable Integer id) throws Exception {
-        movieService.deleteByid(id);
-        return ResponseHandler.generateResponse("Movie successfully deleted", HttpStatus.OK, "id: "+id);
+        ResponseEntity<Object> response = null;
+        MovieDTO found = movieService.findMovieDTOById(id);
+        if (found != null){
+            movieService.deleteByid(id);
+            response=ResponseHandler.generateResponse("Movie successfully deleted", HttpStatus.OK, "id: "+id);
+        }else{
+            response =ResponseHandler.generateResponse("Movie not found", HttpStatus.NOT_FOUND, "id: "+id);
+        }
+
+        return response;
     }
 
     @GetMapping()
-    public ResponseEntity<List<MovieBasicDTO>> getDetailsByFilters (
+    public ResponseEntity<Object> getDetailsByFilters (
             @RequestParam (required = false) String title,
             @RequestParam (required = false) List<Integer> idGenre,
             @RequestParam (required = false, defaultValue = "ASC") String order) {
 
-        List<MovieBasicDTO> movies = this.movieService.getMoviesByFilters(title, idGenre, order);
+        List<MovieDTO> moviesFiltered = this.movieService.getMoviesByFilters(title, idGenre, order);
         List<MovieDTO> list = movieService.getAll();
-        List<MovieEntity> entityList = movieMapper.DTOList2EntityList(list, true);
-        List<MovieBasicDTO> basicList = movieMapper.MovieEntityList2BasicDTOList(entityList);
+        List<MovieBasicDTO> BasicList = movieMapper.DTOList2BasicDTOList(list,true);
         ResponseEntity response = null;
 
-        if (movies.isEmpty()){
+        if (moviesFiltered.isEmpty()){
             response = ResponseHandler.generateResponse("No movie match your request",
-                    HttpStatus.NOT_FOUND,basicList);
+                    HttpStatus.NOT_FOUND,BasicList);
         }else{
-            response = ResponseEntity.ok(movies);
+            response = ResponseEntity.ok(moviesFiltered);
         }
         return response;
     }

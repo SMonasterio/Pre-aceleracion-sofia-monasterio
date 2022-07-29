@@ -36,9 +36,9 @@ public class AuthenticationController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationDTOResponse> signUp(@RequestBody UserDTO user) throws Exception {
+    public ResponseEntity<Object> signUp(@RequestBody UserDTO user) throws Exception {
         userService.save(user);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body("SUCCESSFULL REGISTRATION");
     }
 
     @PostMapping("/login")

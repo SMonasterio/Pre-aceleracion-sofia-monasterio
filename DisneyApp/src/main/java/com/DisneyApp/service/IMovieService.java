@@ -15,7 +15,7 @@ public interface IMovieService {
     void deleteByid(Integer id);
 
 
-    List<MovieBasicDTO> getMoviesByFilters(String name, List<Integer> genre, String order);
+    List<MovieDTO> getMoviesByFilters(String name, List<Integer> genre, String order);
     void addCharacter(Integer movieId, Integer characterId);
     void removeCharacter(Integer movieId, Integer characterId);
 

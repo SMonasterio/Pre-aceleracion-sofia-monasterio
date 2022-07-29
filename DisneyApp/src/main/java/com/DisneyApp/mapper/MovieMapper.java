@@ -27,7 +27,10 @@ public class MovieMapper {
         entity.setImage(movieDTO.getImage());
         entity.setTitle(movieDTO.getTitle());
         entity.setRating(movieDTO.getRating());
-        entity.setReleaseDate(movieDTO.getRelaseDate());
+        entity.setReleaseDate(movieDTO.getReleaseDate());
+        List<CharacterEntity> characterEntities =
+                this.characterMapper.characterDTOList2EntityList(movieDTO.getCharacters());
+        entity.setMoviesCharacters(characterEntities);
 
         return entity;
     }
@@ -38,10 +41,10 @@ public class MovieMapper {
         movieDTO.setImage(entity.getImage());
         movieDTO.setTitle(entity.getTitle());
         movieDTO.setRating(entity.getRating());
-        movieDTO.setRelaseDate(entity.getReleaseDate());
+        movieDTO.setReleaseDate(entity.getReleaseDate());
         if(b){
-            movieDTO.setCharacters(this.characterMapper.characterEntityList2DTOList(entity.getMoviesCharacters(),false));
-            movieDTO.setGenres(this.genreMapper.genreEntityList2DTOList(entity.getMoviesGenres(),false));
+            movieDTO.setCharacters(this.characterMapper.characterEntityList2DTOList(entity.getMoviesCharacters(), false));
+            //movieDTO.setGenres(this.genreMapper.genreEntityList2DTOList(entity.getMoviesGenres(),false));
         }
         return movieDTO;
     }
@@ -51,7 +54,17 @@ public class MovieMapper {
         MovieBasicDTO movieBasicDTO = new MovieBasicDTO();
         movieBasicDTO.setImage(entity.getImage());
         movieBasicDTO.setTitle(entity.getTitle());
-         movieBasicDTO.setRelaseDate(entity.getReleaseDate());
+         movieBasicDTO.setReleaseDate(entity.getReleaseDate());
+
+        return movieBasicDTO;
+    }
+
+    //MovieDTO to MovieBasicDTO
+    public MovieBasicDTO MovieDTO2BasicDTO(MovieDTO movieDTO){
+        MovieBasicDTO movieBasicDTO = new MovieBasicDTO();
+        movieBasicDTO.setImage(movieDTO.getImage());
+        movieBasicDTO.setTitle(movieDTO.getTitle());
+        movieBasicDTO.setReleaseDate(movieDTO.getReleaseDate());
 
         return movieBasicDTO;
     }
@@ -83,5 +96,14 @@ public class MovieMapper {
             movieBasicDTOSList.add(this.MovieEntity2BasicDTO(ent));
         }
         return movieBasicDTOSList;
+    }
+
+    //MovieDTO LIST to MovieBasicDTO LIST
+    public List<MovieBasicDTO> DTOList2BasicDTOList(List<MovieDTO> movieList, boolean b){
+        List<MovieBasicDTO> movieBasicDTOList = new ArrayList<>();
+        for (MovieDTO dto: movieList){
+            movieBasicDTOList.add(this.MovieDTO2BasicDTO(dto));
+        }
+        return movieBasicDTOList;
     }
 }

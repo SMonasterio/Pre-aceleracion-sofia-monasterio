@@ -1,11 +1,10 @@
 package com.DisneyApp.controller;
 
-import com.DisneyApp.entity.CharacterEntity;
 import com.DisneyApp.entity.dto.CharacterBasicDTO;
 import com.DisneyApp.entity.dto.CharacterDTO;
 import com.DisneyApp.handler.ResponseHandler;
+import com.DisneyApp.mapper.CharacterMapper;
 import com.DisneyApp.service.impl.CharacterService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +16,9 @@ import java.util.List;
 @RequestMapping("/characters")
 public class CharacterController {
     @Autowired
-    CharacterService characterService;
-
+    private CharacterService characterService;
+    @Autowired
+    private CharacterMapper characterMapper;
 
     //TODO Verificar si los metodos devuelven lista completa cuando no devuelven nada los filtros.
 
@@ -41,9 +41,10 @@ public class CharacterController {
         ResponseEntity<Object> response = null;
         CharacterDTO charFound = characterService.findCharacterById(id);
         List<CharacterDTO> list = characterService.getAll();
+        List<CharacterBasicDTO> basicList = characterMapper.characterDTOList2BasicDTOList(list);
         if (charFound == null) {
             response = ResponseHandler.generateResponse("Character not found",
-                    HttpStatus.NOT_FOUND, list );
+                    HttpStatus.NOT_FOUND, basicList );
         }else {
             response = ResponseHandler.generateResponse("Character found",
                     HttpStatus.OK, charFound);
@@ -72,15 +73,20 @@ public class CharacterController {
     @DeleteMapping("{id}")
     public ResponseEntity<Object> delete(@PathVariable Integer id) throws Exception {
         ResponseEntity<Object> response = null;
-        characterService.deleteById(id);
-        response = ResponseHandler.generateResponse("Character deleted successfully", HttpStatus.OK, "id: "+id);
+        CharacterDTO found = characterService.findCharacterById(id);
+        if (found != null) {
+            characterService.deleteById(id);
+            response = ResponseHandler.generateResponse("Character deleted successfully", HttpStatus.OK, "id: " + id);
+        }else{
+            response = ResponseHandler.generateResponse("Character not found", HttpStatus.NOT_FOUND, "id: " + id);
 
+        }
         return response;
     }
 
 
     @GetMapping()
-    public ResponseEntity<List<CharacterBasicDTO>> getDetailsByFilters (
+    public ResponseEntity<Object> getDetailsByFilters (
             @RequestParam (required = false) String name,
             @RequestParam (required = false) Integer age,
             @RequestParam (required = false) Double weight,
@@ -89,10 +95,11 @@ public class CharacterController {
 
         List<CharacterBasicDTO> characters = this.characterService.getDetailsByFilter(name, age, weight, idMovie, order);
         List<CharacterDTO> list = characterService.getAll();
+        List<CharacterBasicDTO> basicList= characterMapper.characterDTOList2BasicDTOList(list);
         ResponseEntity response = null;
         if (characters.isEmpty()){
             response = ResponseHandler.generateResponse("Character not found",
-                    HttpStatus.NOT_FOUND, list );
+                    HttpStatus.NOT_FOUND, basicList );
         }else{
             response = ResponseEntity.ok(characters);
         }

@@ -53,7 +53,9 @@ public class MovieService implements IMovieService {
     public MovieDTO save(MovieDTO movieDTO) {
         MovieEntity movieEntity = movieMapper.MovieDTO2Entity(movieDTO);
         MovieEntity saved = movieRepository.save(movieEntity);
-        MovieDTO movieResult = movieMapper.MovieEntity2DTO(saved, false);
+        //if it´s on TRUE I must add character, else 500.
+        //if it´s FALSE and I add a character, it won´t be added, or created.
+        MovieDTO movieResult = movieMapper.MovieEntity2DTO(saved, true);
 
         return movieResult;
     }
@@ -86,11 +88,11 @@ public class MovieService implements IMovieService {
 
         movieToBeUpdated.setImage(movieDTO.getImage());
         movieToBeUpdated.setTitle(movieDTO.getTitle());
-        movieToBeUpdated.setReleaseDate(movieDTO.getRelaseDate());
+        movieToBeUpdated.setReleaseDate(movieDTO.getReleaseDate());
         movieToBeUpdated.setRating(movieDTO.getRating());
 
         MovieEntity updated = movieRepository.save(movieToBeUpdated);
-        MovieDTO result = movieMapper.MovieEntity2DTO(updated, false);
+        MovieDTO result = movieMapper.MovieEntity2DTO(updated, true);
         return result;
     }
 
@@ -137,11 +139,11 @@ public class MovieService implements IMovieService {
 
     //Filters by tiltle & genre, in asc or desc order-
     @Override
-    public List<MovieBasicDTO> getMoviesByFilters(String title, List<Integer> genres, String order) {
+    public List<MovieDTO> getMoviesByFilters(String title, List<Integer> genres, String order) {
         MovieFiltersDTO movieFiltersDTO = new MovieFiltersDTO(title, genres, order);
         List<MovieEntity> entityList = movieRepository.findAll(this.movieSpecification.getByFilters(movieFiltersDTO));
-        List<MovieBasicDTO> resultBasicDTO = movieMapper.MovieEntityList2BasicDTOList(entityList);
-        return resultBasicDTO;
+        List<MovieDTO> resultDTO = movieMapper.EntityList2DTOList(entityList,true);
+        return resultDTO;
     }
 
 }
