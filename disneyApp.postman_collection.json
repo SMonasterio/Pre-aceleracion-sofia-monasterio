@@ -1,0 +1,2572 @@
+{
+	"info": {
+		"_postman_id": "ee687862-9588-44fb-a4aa-c7eee635796d",
+		"name": "disneyApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18057593"
+	},
+	"item": [
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "addMovie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"HP1.jpg\" ,\r\n    \"title\":\"Harry Potter and the Philosopher's Stone\" ,\r\n    \"releaseDate\":\"1001-11-04\" ,\r\n    \"rating\":7,\r\n    \"characters\":[\r\n        {\r\n            \"image\":\"AD.jpg\",\r\n            \"name\":\"Albus Dumbledore\",\r\n            \"age\":130,\r\n            \"weight\":8.00,\r\n            \"history\":\"Hogwarts' Headmaster and one of the most famous and powerful wizards of all time.\"\r\n        },\r\n        {\r\n            \"image\":\"SN.jpg\",\r\n            \"name\":\"Severus Snape\",\r\n            \"age\":60,\r\n            \"weight\":75.00,\r\n            \"history\":\"The Potions Master and head of Slytherin House\"\r\n        }\r\n    ]\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/movies",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"harrypotter1.jpg\",\r\n    \"title\": \"Harry Potter and the Philosopher's Stone\",\r\n    \"releaseDate\": \"1001-11-04\",\r\n    \"rating\": 7\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/movies/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "UpdateById",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"image\": \"harrypotter1.jpg\",\r\n    \"title\": \"Harry Potter and the Philosopher's Stone\",\r\n    \"releaseDate\": \"1001-11-04\",\r\n    \"rating\": 7\r\n }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/movies/5",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										"5"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:14:24 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"Movie not found\",\n    \"status\": 404\n}"
+						}
+					]
+				},
+				{
+					"name": "serachById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/movies/searchById/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"searchById",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "serachById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/movies/searchById/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										"searchById",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:15:09 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"image\": \"HP1.jpg\",\n        \"title\": \"Harry Potter and the Philosopher's Stone\",\n        \"releaseDate\": \"1001-11-04\",\n        \"rating\": 7,\n        \"characters\": [\n            {\n                \"image\": \"AD.jpg\",\n                \"name\": \"Albus Dumbledore\",\n                \"age\": 130,\n                \"weight\": 8,\n                \"history\": \"Hogwarts' Headmaster and one of the most famous and powerful wizards of all time.\",\n                \"movies\": null\n            },\n            {\n                \"image\": \"SN.jpg\",\n                \"name\": \"Severus Snape\",\n                \"age\": 60,\n                \"weight\": 75,\n                \"history\": \"The Potions Master and head of Slytherin House\",\n                \"movies\": null\n            }\n        ]\n    },\n    \"message\": \"Movie found\",\n    \"status\": 200\n}"
+						},
+						{
+							"name": "serachById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/movies/searchById/5",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										"searchById",
+										"5"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:15:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"image\": \"HP1.jpg\",\n            \"title\": \"Harry Potter and the Philosopher's Stone\",\n            \"releaseDate\": \"1001-11-04\"\n        },\n        {\n            \"image\": \"harrypotter1.jpg\",\n            \"title\": \"Harry Potter and the Philosopher's Stone\",\n            \"releaseDate\": \"1001-11-04\"\n        },\n        {\n            \"image\": \"harrypotter1.jpg\",\n            \"title\": \"Harry Potter and the Philosopher's Stone\",\n            \"releaseDate\": \"1001-11-04\"\n        }\n    ],\n    \"message\": \"Movie not found\",\n    \"status\": 404\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/movies/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "deleteById",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/movies/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:16:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"id: 2\",\n    \"message\": \"Movie successfully deleted\",\n    \"status\": 200\n}"
+						},
+						{
+							"name": "deleteById",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/movies/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										"2"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:16:13 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"id: 2\",\n    \"message\": \"Movie not found\",\n    \"status\": 404\n}"
+						}
+					]
+				},
+				{
+					"name": "getByFilters",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/movies?title=Harry",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Harry"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getByFilters",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/movies?title=Harry",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Harry"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:17:34 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"image\": \"HP1.jpg\",\n        \"title\": \"Harry Potter and the Philosopher's Stone\",\n        \"releaseDate\": \"1001-11-04\",\n        \"rating\": 7,\n        \"characters\": [\n            {\n                \"image\": \"AD.jpg\",\n                \"name\": \"Albus Dumbledore\",\n                \"age\": 130,\n                \"weight\": 8,\n                \"history\": \"Hogwarts' Headmaster and one of the most famous and powerful wizards of all time.\",\n                \"movies\": null\n            },\n            {\n                \"image\": \"SN.jpg\",\n                \"name\": \"Severus Snape\",\n                \"age\": 60,\n                \"weight\": 75,\n                \"history\": \"The Potions Master and head of Slytherin House\",\n                \"movies\": null\n            }\n        ]\n    },\n    {\n        \"image\": \"harrypotter1.jpg\",\n        \"title\": \"Harry Potter and the Philosopher's Stone\",\n        \"releaseDate\": \"1001-11-04\",\n        \"rating\": 7,\n        \"characters\": [\n            {\n                \"image\": \"AD.jpg\",\n                \"name\": \"Albus Dumbledore\",\n                \"age\": 130,\n                \"weight\": 8,\n                \"history\": \"Hogwarts' Headmaster and one of the most famous and powerful wizards of all time.\",\n                \"movies\": null\n            },\n            {\n                \"image\": \"SN.jpg\",\n                \"name\": \"Severus Snape\",\n                \"age\": 60,\n                \"weight\": 75,\n                \"history\": \"The Potions Master and head of Slytherin House\",\n                \"movies\": null\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "addCharacterToMovie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/movies/1/character/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"1",
+								"character",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "addCharacterToMovie",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/movies/1/character/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										"1",
+										"character",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "38"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:18:02 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Character successfully added to movie!"
+						},
+						{
+							"name": "addCharacterToMovie",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/movies/1/character/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										"1",
+										"character",
+										"1"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:18:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "This character is already associated to this movie"
+						}
+					]
+				},
+				{
+					"name": "addGenreToMovie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/movies/1/genre/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"1",
+								"genre",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "addGenreToMovie",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/movies/1/genre/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										"1",
+										"genre",
+										"3"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:19:13 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Genre successfully added to movie!"
+						},
+						{
+							"name": "addGenreToMovie",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/movies/1/genre/4",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										"1",
+										"genre",
+										"4"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:19:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "This genre is already associated to this movie"
+						}
+					]
+				},
+				{
+					"name": "removeCharacter",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/movies/2/character/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"2",
+								"character",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "removeCharacter",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/movies/1/character/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										"1",
+										"character",
+										"3"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:20:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "This character is not associated to this movie "
+						},
+						{
+							"name": "removeCharacter",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/movies/1/character/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										"1",
+										"character",
+										"2"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:20:14 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Character successfully removed from movie!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Genres",
+			"item": [
+				{
+					"name": "addGenre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNTAzNSwiaWF0IjoxNjU5MjA5MDM1fQ.ITxBSV2Ps_oQigMppoMs3q-Reekliju5SFidw6CLEQ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Action\",\r\n    \"image\": \"action.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/genres",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addGenre 1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNTAzNSwiaWF0IjoxNjU5MjA5MDM1fQ.ITxBSV2Ps_oQigMppoMs3q-Reekliju5SFidw6CLEQ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Comedy\",\r\n    \"image\": \"comedy.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/genres",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addGenre 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNTAzNSwiaWF0IjoxNjU5MjA5MDM1fQ.ITxBSV2Ps_oQigMppoMs3q-Reekliju5SFidw6CLEQ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Drama\",\r\n    \"image\": \"drama.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/genres",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addGenre 3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNTAzNSwiaWF0IjoxNjU5MjA5MDM1fQ.ITxBSV2Ps_oQigMppoMs3q-Reekliju5SFidw6CLEQ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Fantasy\",\r\n    \"image\": \"fantasy.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/genres",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteGenre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.{{TokenDisneyApp}}.0y6M0Jyj89pZCb1LZnj5h_Hox0bjI92KjGDqnKRbFEE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/genres/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"genres",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "deleteGenre",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/genres/5",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"genres",
+										"5"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 19:26:56 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Genre deleted sucsessfully"
+						}
+					]
+				},
+				{
+					"name": "updateGenre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNTAzNSwiaWF0IjoxNjU5MjA5MDM1fQ.ITxBSV2Ps_oQigMppoMs3q-Reekliju5SFidw6CLEQ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Action\",\r\n    \"image\": \"actionImg.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/genres/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"genres",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllGenres",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNTAzNSwiaWF0IjoxNjU5MjA5MDM1fQ.ITxBSV2Ps_oQigMppoMs3q-Reekliju5SFidw6CLEQ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/genres",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getAllGenres",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/genres",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"genres"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 19:28:12 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"name\": \"Action\",\n            \"image\": \"actionImg.jpg\",\n            \"movies\": null\n        },\n        {\n            \"name\": \"Comedy\",\n            \"image\": \"comedy.jpg\",\n            \"movies\": null\n        },\n        {\n            \"name\": \"Drama\",\n            \"image\": \"drama.jpg\",\n            \"movies\": null\n        },\n        {\n            \"name\": \"Fantasy\",\n            \"image\": \"fantasy.jpg\",\n            \"movies\": null\n        }\n    ],\n    \"message\": \"Genre's list\",\n    \"status\": 200\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Characters",
+			"item": [
+				{
+					"name": "addCharacter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n    \"image\":\"HP.jpg\",\r\n    \"name\":\"Harry Potter\",\r\n    \"age\":11,\r\n    \"weight\":40.00,\r\n    \"history\":\"An 11-year-old orphan living with his unwelcoming aunt, uncle, and cousin, when he is accepted to Hogwarts School of Witchcraft and Wizardry.\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/characters",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "addCharacter",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n    {\r\n    \"image\":\"HP.jpg\",\r\n    \"name\":\"Harry Potter\",\r\n    \"age\":11,\r\n    \"weight\":40.00,\r\n    \"history\":\"An 11-year-old orphan living with his unwelcoming aunt, uncle, and cousin, when he is accepted to Hogwarts School of Witchcraft and Wizardry.\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/characters",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"characters"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:02:24 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"image\": \"HP.jpg\",\n    \"name\": \"Harry Potter\",\n    \"age\": 11,\n    \"weight\": 40,\n    \"history\": \"An 11-year-old orphan living with his unwelcoming aunt, uncle, and cousin, when he is accepted to Hogwarts School of Witchcraft and Wizardry.\",\n    \"movies\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "addCharacter 1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n    \"image\":\"RW.jpg\",\r\n    \"name\":\"Ron Weasley\",\r\n    \"age\":11,\r\n    \"weight\":40.00,\r\n    \"history\":\"Harry's best friend at Hogwarts and a younger member of the Weasley wizarding family.\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/characters",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "addCharacter",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n    {\r\n    \"image\":\"HP.jpg\",\r\n    \"name\":\"Harry Potter\",\r\n    \"age\":11,\r\n    \"weight\":40.00,\r\n    \"history\":\"An 11-year-old orphan living with his unwelcoming aunt, uncle, and cousin, when he is accepted to Hogwarts School of Witchcraft and Wizardry.\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/characters",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"characters"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:02:24 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"image\": \"HP.jpg\",\n    \"name\": \"Harry Potter\",\n    \"age\": 11,\n    \"weight\": 40,\n    \"history\": \"An 11-year-old orphan living with his unwelcoming aunt, uncle, and cousin, when he is accepted to Hogwarts School of Witchcraft and Wizardry.\",\n    \"movies\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "addCharacter 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n    \"image\":\"HG.jpg\",\r\n    \"name\":\"Hermione Granger\",\r\n    \"age\":11,\r\n    \"weight\":40.00,\r\n    \"history\":\"Harry's other best friend and the trio's brains.\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/characters",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "addCharacter",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n    {\r\n    \"image\":\"HP.jpg\",\r\n    \"name\":\"Harry Potter\",\r\n    \"age\":11,\r\n    \"weight\":40.00,\r\n    \"history\":\"An 11-year-old orphan living with his unwelcoming aunt, uncle, and cousin, when he is accepted to Hogwarts School of Witchcraft and Wizardry.\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/characters",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"characters"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:02:24 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"image\": \"HP.jpg\",\n    \"name\": \"Harry Potter\",\n    \"age\": 11,\n    \"weight\": 40,\n    \"history\": \"An 11-year-old orphan living with his unwelcoming aunt, uncle, and cousin, when he is accepted to Hogwarts School of Witchcraft and Wizardry.\",\n    \"movies\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "getAllChracters",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/characters",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCharacter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\":\"harrypotter.jpg\",\r\n    \"name\":\"Harry Potter\",\r\n    \"age\":11,\r\n    \"weight\":30.00,\r\n    \"history\":\"An 11-year-old orphan living with his unwelcoming aunt, uncle, and cousin, when he is accepted to Hogwarts School of Witchcraft and Wizardry.\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/characters/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCharacter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/characters/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "deleteCharacter",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/characters/4",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"characters",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:06:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"id: 4\",\n    \"message\": \"Character deleted successfully\",\n    \"status\": 200\n}"
+						},
+						{
+							"name": "deleteCharacter",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/characters/4",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"characters",
+										"4"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:06:39 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"id: 4\",\n    \"message\": \"Character not found\",\n    \"status\": 404\n}"
+						}
+					]
+				},
+				{
+					"name": "getCharacterById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/characters/searchById/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters",
+								"searchById",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getCharacterById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/characters/searchById/5",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"characters",
+										"searchById",
+										"5"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:07:12 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"image\": \"harrypotter.jpg\",\n            \"name\": \"Harry Potter\"\n        },\n        {\n            \"image\": \"RW.jpg\",\n            \"name\": \"Ron Weasley\"\n        },\n        {\n            \"image\": \"HG.jpg\",\n            \"name\": \"Hermione Granger\"\n        }\n    ],\n    \"message\": \"Character not found\",\n    \"status\": 404\n}"
+						}
+					]
+				},
+				{
+					"name": "getCharactersByFilters",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJFeGFtcGxlVXNlciIsImV4cCI6MTY1OTIxNzI1NCwiaWF0IjoxNjU5MjExMjU0fQ.V3rr2wzAtbBnFjd4q_fTDSE_DwcPKR99HIF0RfNgZSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/characters",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Ron",
+									"disabled": true
+								},
+								{
+									"key": "age",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "weight",
+									"value": "2.50",
+									"disabled": true
+								},
+								{
+									"key": "movies",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getCharactersByFilters",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/characters?name=Ron",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"characters"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Ron"
+										},
+										{
+											"key": "age",
+											"value": "53",
+											"disabled": true
+										},
+										{
+											"key": "weight",
+											"value": "2.50",
+											"disabled": true
+										},
+										{
+											"key": "movies",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:07:39 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"image\": \"RW.jpg\",\n        \"name\": \"Ron Weasley\"\n    }\n]"
+						},
+						{
+							"name": "getCharactersByFilters",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/characters?age=10",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"characters"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Ron",
+											"disabled": true
+										},
+										{
+											"key": "age",
+											"value": "10"
+										},
+										{
+											"key": "weight",
+											"value": "2.50",
+											"disabled": true
+										},
+										{
+											"key": "movies",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 20:07:58 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"image\": \"harrypotter.jpg\",\n            \"name\": \"Harry Potter\"\n        },\n        {\n            \"image\": \"RW.jpg\",\n            \"name\": \"Ron Weasley\"\n        },\n        {\n            \"image\": \"HG.jpg\",\n            \"name\": \"Hermione Granger\"\n        }\n    ],\n    \"message\": \"Character not found\",\n    \"status\": 404\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"ExampleUser\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"ExampleUser\",\r\n    \"password\":\"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/auth/register",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "24"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Jul 2022 19:19:50 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "SUCCESSFULL REGISTRATION"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"ExampleUser\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "TokenDisneyApp",
+			"value": "eyJzdWIiOiJTTW9uYXN0ZXJpbyIsImV4cCI6MTY1OTEwODg1MCwiaWF0IjoxNjU5MTAyODUwfQ"
+		}
+	]
+}
